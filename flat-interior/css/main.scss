@@ -1,0 +1,608 @@
+$h1:#{'min(3.6em,36px)'};
+$h2:#{'min(3.6em,36px)'};
+$h4:#{'min(1.8em,18px)'};
+$p:#{'min(1.8em,18px)'};
+
+$lh80:#{'min(2rem,80px)'};
+$lh40:#{'min(1rem,40px)'};
+$lh20:#{'min(0.5rem,20px)'};
+
+@mixin ff($fontname,$url){
+    @font-face {
+        font-family: '#{fontname}';
+        src: url('../css/fonts/#{$url}');
+    }
+}
+
+// 사용할 폰트
+
+// 아직 미정
+
+// 그리드
+
+@mixin gd($dev){
+    @if($dev=='pc'){
+        width: 80%;
+        max-width: 1400px;
+    }
+    @else{
+        width: 90%;
+        max-width: 700px;
+    }
+    margin: 0 auto;
+}
+
+// 백그라운드 기본설정
+
+@mixin bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@mixin keyframe($deg){
+    @keyframes #{$deg}{
+        @content;
+    }
+}
+@mixin animation ($timing, $duration, $name, $count,$tt){
+    animation-name: $name;
+    animation-iteration-count: $count;
+    animation-duration: $duration;
+    animation-timing-function: $timing;
+    transform-origin: $tt;
+}
+
+
+html{
+    font-size: 2.28vw;
+    body{
+        font-size: 0.57vw;
+        position: relative;
+        overflow-y: hidden;
+    }
+}
+
+.hdrWrap{
+    position: fixed;
+    top: 0;left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: $lh80;
+    header{
+        @include gd('pc');
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            width: calc(100% / 12);
+            @include bg;
+            background-size: contain;
+            background-image: url('/images/logo.png');
+            height: $lh80;
+        }
+        nav{
+            width: calc(100% / 12 * 4);
+            display: flex;
+            justify-content: space-between;
+            h4{
+                font-weight: 700;
+                line-height: $lh80;
+                font-size: #{'min(1.8em,18px)'};
+                text-transform: uppercase;
+            }
+        }
+        .text{
+            width: calc(100% / 12 * 2.1);
+            display: flex;
+            justify-content: space-between;
+            h2{
+                font-size: #{'min(1.8em,18px)'};
+                line-height: $lh80;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.cntWrap{
+    position: relative;
+    z-index: 10;
+    .content.cnt01{
+        position: relative;
+        padding-top: #{'min(4rem,160px)'};
+        @include gd('pc');
+        height: 100vh;
+        margin: 0 auto;
+        text-align: center;
+        header{
+            p{
+                font-size: #{'min(3em,30px)'};
+                font-weight: 700;
+                line-height: $lh40;
+            }
+            .btn{
+                width: calc(100% / 12 * 3);
+                margin: 0 auto;
+                margin-top: #{'min(0.5rem,20px)'};
+                border: 2px solid #000;
+                border-radius: 20px;
+                line-height: #{'min(1rem,40px)'};
+                text-transform: capitalize;
+                &:nth-child(2){
+                    font-size: #{'min(1.4em,14px)'};
+                }
+                &:nth-child(3){
+                    font-size: #{'min(2.4em,24px)'};
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+        }
+        section{
+            article{
+                position: relative;
+                .images{
+                    height: #{'min(9rem,360px)'};
+                    @include bg;
+                    .image.i1{
+                        overflow: hidden;
+                        width: 100%;
+                        position: absolute;
+                        top: 0;left: 0;right: 0;bottom: #{'min(0.25rem,10px)'};
+                        margin: auto;
+                        background-size: contain;
+                        z-index: 2;
+                        height: #{'min(9rem,360px)'};
+                        background-image: url('../images/background.png');
+                    }
+                    .image.i2{
+                        width: 80%;
+                        background-size: contain;
+                        position: absolute;
+                        top: 0;left: 0;right: 0;bottom: 0;
+                        margin: auto;
+                        z-index: 1;
+                        background-image: url('../images/Untitled-2.png');
+                        height: #{'min(7.5rem,300px)'};
+                    }
+                }
+                .texts{
+                    position: absolute;
+                    top:#{'min(9rem,360px)'};left:0;right:0;
+                    .textTop{
+                        width: calc(100% / 12 * 5);
+                        margin: 0 auto;
+                        height: $lh40;
+                        line-height: $lh20;
+                        font-size: $h4;
+                        overflow: hidden;
+                    }
+                    .textBtm{
+                        width: calc(100% / 12 * 4);
+                        line-height: $lh20;
+                        font-size: #{'min(1.8em,18px)'};
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 0 auto;
+                        margin-top: $lh40;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+        .down{
+            position: relative;
+            width: 20%;
+            margin: #{'min(4.5rem,180px)'} auto;
+            .image{
+                @include bg;
+                background-size: contain;
+                height: $lh80;
+                background-image: url('/images/down-arrow.png');
+                @include animation(linear,3s,deg,infinite,(50%,50%));
+                @include keyframe(deg){
+                    0%{
+                        opacity: 100%;
+                    }
+                    50%{
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 100%;
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+            h5{
+                font-size: #{'min(1.8em,18px)'};
+                font-weight: 700;
+                text-transform: uppercase;
+                line-height: $lh40;
+                position: absolute;
+                top: #{'max(-1rem,-40px)'}; right: 0;left: 0;
+            }
+        }
+    }
+    .content.cnt02{
+        height: 100vh;
+        padding-top: #{'min(5rem,200px)'};
+        @include gd('pc');
+        display: flex;
+        justify-content: space-between;
+        header{
+            position: relative;
+            width: 50%;
+            padding-top: #{'min(3rem,120px)'};
+            .logo{
+                margin-left: #{'min(1.75rem,70px)'};
+                .image{
+                    width: calc(100% / 6 * 1.8);
+                    @include bg;
+                    background-size: contain;
+                    background-image: url('/images/logo.png');
+                    height: #{'min(2.5rem,100px)'}
+                }
+                .txt{
+                    margin-top: $lh20;
+                    display: flex;
+                    justify-content: space-between;
+                    width: calc(100% / 6 * 2.4);
+                    h2{
+                        font-size: #{'min(1.8em,18px)'};
+                        line-height: $lh40;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .texts{
+                margin-left: #{'min(1.75rem,70px)'};
+                width: 100%;
+                p{
+                    width: calc(100% / 6 * 5);
+                    font-size: #{'min(2.2em,22px)'};
+                    line-height: $lh20;
+                    font-weight: 700;
+                    height: $lh40;
+                    margin-top: $lh20;
+                    &:nth-child(4){
+                        font-size: $p;
+                        height: $lh80;
+                        overflow: hidden;
+                        font-weight: bold;
+                        opacity: 70%;
+                        width: calc(100% / 6 * 4);
+                        margin-top: $lh20;
+                    }                   
+                }
+                .btn{
+                    text-align: center;
+                    font-size: $h4;
+                    line-height: $lh40;
+                    border: 1px solid black;
+                    border-radius: 20px;
+                    width: calc(100% / 6 * 4);
+                    background-color: #000;
+                    color: #fff;
+                    text-transform: capitalize;
+                    margin-top: $lh20;
+                }
+                h3{
+                    margin-top: $lh20;
+                    font-size: $h2;
+                    line-height: $lh40;
+                }
+            }
+        }
+        section{
+            width: 50%;
+            .images{
+                .leftimg{
+                    position: relative;
+                    .image{
+                        @include bg;
+                    }
+                    .image.i1{
+                        width: 20%;
+                        position: absolute;
+                        left: #{'max(-17rem,-680px)'};;top: 0;
+                        height: #{'min(4rem,160px)'};
+                        background-size: contain;
+                        background-image: url('/images/content2/left.png');
+                    }
+                    .image.i2{
+                        width: 50%;
+                        position: absolute;
+                        top: 0;right: #{'min(12rem,480px)'};
+                        background-size: contain;
+                        height: #{'min(5rem,200px)'};
+                        background-image: url('/images/content2/right.png');
+                    }
+                    .image.i3{
+                        width: 20%;
+                        position: absolute;
+                        top: #{'min(2.5rem,100px)'};
+                        right: #{'min(16.5rem,660px)'};
+                        background-size: contain;
+                        background-image: url('/images/content3/Vector\ Smart\ Object.svg');
+                        height: #{'min(2.5rem,100px)'};
+                    }
+                }
+                .rightimg{
+                    padding-top: #{'min(1rem,40px)'};
+                    .image{
+                        margin: 0 auto;
+                        width: calc(100% / 6 * 4.5);
+                        @include bg;
+                        background-size: contain;
+                        background-image: url('/images/content2/cnt2.png');
+                        height: #{'min(14rem,560px)'};;
+                    }
+                }
+            }
+        }
+    }
+    .content.cnt03{
+        display: flex;
+        justify-content: space-between;
+        height: 100vh;
+        padding-top: #{'min(6rem,240px)'};
+        @include gd('pc');
+        header{
+            padding-top: #{'min(2.5rem,100px)'};
+            width: calc(100% / 12 * 3);
+            margin-right: 10px;
+            text-align: center;
+            .logo{
+                margin-left: #{'min(1rem,40px)'};;
+                .image{
+                    @include bg;
+                    background-size: contain;
+                    background-image: url('/images/logo.png');
+                    height: #{'min(3rem,120px)'};
+                }
+                .txt{
+                    margin: 0 auto;
+                    margin-top: $lh20;
+                    display: flex;
+                    justify-content: space-between;
+                    width: calc(100% / 3 * 2.4);
+                    h2{
+                        font-size: #{'min(1.8em,18px)'};
+                        line-height: $lh40;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .text{
+                margin-left: #{'min(1rem,40px)'};
+                p{
+                    font-size: #{'min(1.8em,18px)'};
+                    line-height: $lh20;
+                    font-weight: 700;
+                    height: $lh40;
+                    margin-top: $lh40;
+                }
+                .btn{
+                    margin-top: $lh40;
+                    border: 1px solid black;
+                    border-radius: 20px;
+                    line-height: $lh40;
+                    background-color: #000;
+                    color: #fff;
+                    text-align: center;
+                    font-size: $h4;
+                }
+            }
+        }
+        section{
+            width: calc(100% / 12 * 9);
+            margin-left: 10px;
+            article{
+                display: flex;
+                justify-content: space-between;
+                .images{
+                    width: calc(100% / 9 * 6);
+                    margin-right: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    @include bg;
+                    .image.i1{
+                        width: #{'min(5rem,200px)'};
+                        z-index: 2;
+                        position: absolute;
+                        left: #{'max(-2rem,-80px)'};top: 0;
+                        height: $lh80;
+                        background-size: contain;
+                        background-image: url('/images/content3/left.png');
+                    }
+                    .image.i2{
+                        z-index: 1;
+                        width: 100%;
+                        position: absolute;
+                        left: 0;top: 0;
+                        height: #{'min(11rem,440px)'};
+                        background-size: contain;
+                        background-image: url('/images/content3/cnt3.png');
+                    }
+                    .image.i3{
+                        overflow: hidden;
+                        height: #{'min(7rem,280px)'};
+                        z-index: 2;
+                        width: #{'min(11.5rem,460px)'};
+                        position: absolute;
+                        right: #{'max(-6rem,-240px)'};top: 0;
+                        background-size: contain;
+                        background-image: url('/images/content3/right.png');
+                    }
+                }
+                .texts{
+                    padding-top: #{'min(3rem,120px)'};
+                    margin-left: 10px;
+                    width: calc(100% / 9 * 3);
+                    text-align: center;
+                    .image{
+                        @include bg;
+                        background-size: contain;
+                        background-image: url('/images/content3/Vector\ Smart\ Object.svg');
+                        height: #{'min(3rem,120px)'};
+                    }
+                    h2{
+                        margin-top: #{'min(1rem,40px)'};
+                        font-size: #{'min(3.6em,36px)'};
+                        line-height: #{'min(1rem,40px)'};
+                    }
+                    p{
+                        font-size: $p;
+                        height: $lh80;
+                        line-height: $lh20;
+                        overflow: hidden;
+                        font-weight: bold;
+                        opacity: 70%;
+                        margin-top: $lh40;
+                    }
+                }
+            }
+        }
+    }
+    .content.cnt04{
+        display: flex;
+        justify-content: space-between;
+        height: 100vh;
+        padding-top: #{'min(6rem,240px)'};
+        @include gd('pc');
+        section{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .leftimg{
+                width: calc(100% / 12 * 3.5);
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                .image{
+                    @include bg;
+                    background-size: contain;
+                    &.i1{
+                        width: 100%;
+                        background-image: url('/images/content4/left.png');
+                        height: #{'min(16rem,560px)'};
+                    }
+                    &.i2{
+                        position: absolute;
+                        top: #{'min(7.5rem,300px)'};left:#{'min(8rem,320px)'};
+                        width: #{'min(4.5rem,180px)'};
+                        height: #{'min(7rem,280px)'};
+                        background-image: url('/images/content4/leftline.png');
+                    }
+                }
+            }
+            .midtext{
+                padding-top: $lh40;
+                width: calc(100% / 12 * 5 - 20px);
+                text-align: center;  
+                .logo{
+                    @include bg;
+                    background-size: contain;
+                    background-image: url('/images/logo.png');
+                    height: #{'min(3rem,120px)'};
+                    width: #{'min(3rem,120px)'}; 
+                    margin: 0 auto;
+                }
+                .btn{
+                    width: calc(100% / 5 * 1.5);
+                    margin: 0 auto;
+                    margin-top: $lh40;
+                    border: 1px solid black;
+                    border-radius: 20px;
+                    line-height: $lh40;
+                    background-color: #000;
+                    color: #fff;
+                    font-size: $h4;
+                }
+                p{
+                    margin-top: $lh20;
+                    font-size: $h4;
+                    line-height: $lh20;
+                    height: $lh40;
+                    font-weight: bold;
+                    &:nth-child(4){
+                        font-size: #{'min(1.2em,12px)'};
+                        line-height: $lh20;
+                        height: $lh80;
+                        width: calc(100% / 5 * 3);
+                        margin: 0 auto;
+                        margin-top: $lh20;
+                        overflow: hidden;
+                    }
+                }
+                h2{
+                    margin-top: #{'min(1rem,40px)'};
+                    font-size: #{'min(4em,40px)'};
+                    line-height: #{'min(1rem,40px)'};
+                    font-weight: bold;
+                }
+                .texts{
+                    display: flex;
+                    justify-content: space-between;
+                    width: calc(100% / 5 * 2);
+                    margin: $lh20 auto;
+                    h3{
+                        font-size: #{'min(1.6em,16px)'};
+                        line-height: $lh40;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                } 
+            }
+            .rightimg{
+                width: calc(100% / 12 * 3.5);
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                .image{
+                    @include bg;
+                    background-size: contain;
+                    &.i1{
+                        width: 100%;
+                        background-image: url('/images/content4/right.png');
+                        height: #{'min(16rem,560px)'};
+                    }
+                    &.i2{
+                        position: absolute;
+                        top: 0;right:#{'min(6rem,240px)'};
+                        width: #{'min(9rem,360px)'};
+                        height: #{'min(6rem,240px)'};
+                        background-image: url('/images/content4/rightline.png');
+                    }
+                }
+            }
+        }
+    }
+}
+.sidebar{
+    position: fixed;
+    top: 25%;
+    right: 150px;
+    z-index: 9999;
+    .image{
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: $lh80;
+        @include bg;
+        background-size: contain;
+        height: $lh40;
+        width: $lh40;
+        background-image: url('/images/sidebar/ellipse.png');
+        &.on{
+            @include bg;
+            background-size: contain;
+            height: $lh40;
+            width: $lh40;
+            background-image: url('/images/sidebar/arrow.png');
+        }
+    }
+}
