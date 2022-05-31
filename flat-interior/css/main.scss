@@ -56,6 +56,7 @@ $lh20:#{'min(0.5rem,20px)'};
 
 html{
     font-size: 2.28vw;
+    overflow: hidden;
     body{
         font-size: 0.57vw;
         position: relative;
@@ -80,6 +81,7 @@ html{
             background-size: contain;
             background-image: url('/images/logo.png');
             height: $lh80;
+            cursor: pointer;
         }
         nav{
             width: calc(100% / 12 * 4);
@@ -90,6 +92,7 @@ html{
                 line-height: $lh80;
                 font-size: #{'min(1.8em,18px)'};
                 text-transform: uppercase;
+                cursor: pointer;
             }
         }
         .text{
@@ -98,9 +101,10 @@ html{
             justify-content: space-between;
             h2{
                 font-size: #{'min(1.8em,18px)'};
-                line-height: $lh80;
+                line-height: $lh40;
                 text-transform: uppercase;
                 font-weight: 700;
+                margin-top: $lh20;
             }
         }
     }
@@ -234,12 +238,26 @@ html{
                 }
             }
             h5{
-                font-size: #{'min(1.8em,18px)'};
-                font-weight: 700;
-                text-transform: uppercase;
-                line-height: $lh40;
-                position: absolute;
-                top: #{'max(-1rem,-40px)'}; right: 0;left: 0;
+                &.typingTxt{
+                    display: none;
+                }
+                &.typing{
+                    position: relative;
+                    display: inline-block;
+                    font-size: #{'min(1.8em,18px)'};
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    line-height: $lh40;
+                    &::after{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: 0;right: -10px ;width: 4px;height: 100%;background-color: #000;
+                    }
+                    &.active::after{
+                        display: none;
+                    }
+                }
             }
         }
     }
@@ -386,7 +404,7 @@ html{
                     margin-top: $lh20;
                     display: flex;
                     justify-content: space-between;
-                    width: calc(100% / 3 * 2.4);
+                    width: calc(100% / 3 * 2.5);
                     h2{
                         font-size: #{'min(1.8em,18px)'};
                         line-height: $lh40;
@@ -605,7 +623,7 @@ html{
 .sidebar{
     position: fixed;
     top: 25%;
-    right: #{'min(4rem,160px)'};
+    right: 5%;
     z-index: 100;
     .image{
         cursor: pointer;
@@ -630,7 +648,7 @@ html{
     position: fixed;
     left: 0;top: 0;
     z-index: 101;
-    width: 100%; height: 100vh;
+    width: 100%; height: 100vw;
     background: rgba(0,0,0,0.3);
     &.on{
         display: block;
@@ -640,7 +658,8 @@ html{
     position: fixed;
     top: 0;left: -30%;
     z-index: 102;
-    width: 30%;height: 100vh;
+    width: 30%;
+    height: 100vh;
     overflow-y: scroll;
     background-color: #fff;
     transition: all 0.8s;
@@ -671,11 +690,21 @@ html{
         width: 100%;
         border-top: 1px solid black;
         h2{
+            cursor: pointer;
             font-size: #{'min(2.8em,28px)'};
             line-height: $lh80;
             font-weight: 700;
             text-transform: uppercase;
             margin-top: $lh20;
+            &:nth-child(2){
+                color: gray;
+            }
+            &:nth-child(3){
+                color: gray;
+            }
+            &:nth-child(5){
+                color: gray;
+            }
         }
     }
     .menu_Box_02{
