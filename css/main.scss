@@ -218,7 +218,7 @@ html{
             position: relative;
             width: 20%;
             margin: 0 auto;
-            margin-top: #{'min(3rem,120px)'};
+            margin-top: #{'min(4rem,160px)'};
             .image{
                 @include bg;
                 background-size: contain;
@@ -278,7 +278,7 @@ html{
                     width: calc(100% / 6 * 1.8);
                     @include bg;
                     background-size: contain;
-                    background-image: url('/images/logo.png');
+                    background-image: url('../images/logo.png');
                     height: #{'min(2.5rem,100px)'}
                 }
                 .txt{
@@ -347,7 +347,7 @@ html{
                         left: #{'max(-17rem,-680px)'};;top: 0;
                         height: #{'min(4rem,160px)'};
                         background-size: contain;
-                        background-image: url('/images/content2/left.png');
+                        background-image: url('../images/content2/left.png');
                     }
                     .image.i2{
                         width: 50%;
@@ -355,7 +355,7 @@ html{
                         top: 0;right: #{'min(12rem,480px)'};
                         background-size: contain;
                         height: #{'min(5rem,200px)'};
-                        background-image: url('/images/content2/right.png');
+                        background-image: url('../images/content2/right.png');
                     }
                     .image.i3{
                         width: 20%;
