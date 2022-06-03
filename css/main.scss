@@ -133,7 +133,7 @@ html{
     z-index: 10;
     .content.cnt01{
         position: relative;
-        padding-top: #{'min(4rem,160px)'};
+        padding-top: #{'min(3rem,120px)'};
         @include gd('pc');
         height: 100vh;
         margin: 0 auto;
