@@ -62,6 +62,7 @@ html{
         position: relative;
         overflow-y: hidden;
         overflow-x: hidden;
+        cursor: none;
     }
 }
 
@@ -81,7 +82,6 @@ html{
             background-size: contain;
             background-image: url('../images/logo.png');
             height: $lh80;
-            cursor: pointer;
         }
         nav{
             width: calc(100% / 12 * 4);
@@ -92,7 +92,6 @@ html{
                 line-height: $lh80;
                 font-size: #{'min(1.8em,18px)'};
                 text-transform: uppercase;
-                cursor: pointer;
             }
         }
         .text{
@@ -627,7 +626,6 @@ html{
     right: 5%;
     z-index: 100;
     .image{
-        cursor: pointer;
         transition: all 0.3s;
         margin-top: $lh80;
         @include bg;
@@ -691,7 +689,6 @@ html{
         width: 100%;
         border-top: 1px solid black;
         h2{
-            cursor: pointer;
             font-size: #{'min(2.8em,28px)'};
             line-height: $lh80;
             font-weight: 700;
@@ -718,4 +715,8 @@ html{
         width: 100%;
         border-top: 1px solid black;
     }
+}
+
+.cursor{
+    width: 40px;height: 40px;border-radius: 50%;position: fixed;top: 500px;left: 500px;transform: translate(-50%,-50%);pointer-events: none;z-index: 500;@include bg;background: url('../images/pen.png');background-size: contain;
 }
