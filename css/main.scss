@@ -217,7 +217,8 @@ html{
         .down{
             position: relative;
             width: 20%;
-            margin: #{'min(4.5rem,180px)'} auto;
+            margin: 0 auto;
+            margin-top: #{'min(3rem,120px)'};
             .image{
                 @include bg;
                 background-size: contain;
