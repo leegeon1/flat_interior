@@ -218,7 +218,7 @@ html{
             position: relative;
             width: 20%;
             margin: 0 auto;
-            margin-top: #{'min(4rem,160px)'};
+            margin-top: #{'min(3rem,120px)'};
             .image{
                 @include bg;
                 background-size: contain;
